@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="itext7" Version="7.2.5" />
+    <PackageReference Include="itext7.pdfhtml" Version="4.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ArabicFont\Alexandria-VariableFont_wght.ttf" />
+    <None Remove="ArabicFont\logo.png" />
+    <None Remove="ArabicFont\OFL.txt" />
+    <None Remove="ArabicFont\README.txt" />
+    <None Remove="ArabicFont\static\Alexandria-Black.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-Bold.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-ExtraBold.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-ExtraLight.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-Light.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-Medium.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-Regular.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-SemiBold.ttf" />
+    <None Remove="ArabicFont\static\Alexandria-Thin.ttf" />
+    <None Remove="Font\LexendDeca-VariableFont_wght.ttf" />
+    <None Remove="Font\static\LexendDeca-Black.ttf" />
+    <None Remove="Font\static\LexendDeca-Bold.ttf" />
+    <None Remove="Font\static\LexendDeca-ExtraBold.ttf" />
+    <None Remove="Font\static\LexendDeca-ExtraLight.ttf" />
+    <None Remove="Font\static\LexendDeca-Light.ttf" />
+    <None Remove="Font\static\LexendDeca-Medium.ttf" />
+    <None Remove="Font\static\LexendDeca-Regular.ttf" />
+    <None Remove="Font\static\LexendDeca-SemiBold.ttf" />
+    <None Remove="Font\static\LexendDeca-Thin.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ArabicFont\Alexandria-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\OFL.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Black.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-ExtraBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-ExtraLight.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Light.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-SemiBold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArabicFont\static\Alexandria-Thin.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Font\static\LexendDeca-Black.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Font\LexendDeca-VariableFont_wght.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-Bold.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-ExtraBold.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-ExtraLight.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-Light.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-Medium.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-Regular.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-SemiBold.ttf" />
+    <EmbeddedResource Include="Font\static\LexendDeca-Thin.ttf" />
+  </ItemGroup>
+
+</Project>
