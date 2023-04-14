@@ -120,17 +120,17 @@ namespace AIB.Data
 			modelBuilder.Entity<ExtendedUser>().HasData(new ExtendedUser
 			{
 				Id = ADMIN_ID,
-				UserName = "rashidt24@gmail.com",
-				FirstName = "rashidt24@gmail.com",
+				UserName = "sales1@panoramains.com",
+				FirstName = "sales1@panoramains.com",
 
                 MarriageStatus = MarriageStatus.Single,
 				TypeOfUser = TypeOfUser.Broker,
 				Gender = Gender.Male,
-				NormalizedUserName = "rashidt24@gmail.com",
-				Email = "rashidt24@gmail.com",
-				NormalizedEmail = "rashidt24@gmail.com",
+				NormalizedUserName = "sales1@panoramains.com",
+				Email = "sales1@panoramains.com",
+				NormalizedEmail = "sales1@panoramains.com",
 				EmailConfirmed = true,
-				PasswordHash = hasher.HashPassword(null, "Arifkhan@123"),
+				PasswordHash = hasher.HashPassword(null, "Ram@2023"),
 				SecurityStamp = string.Empty
 			});
 			modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
