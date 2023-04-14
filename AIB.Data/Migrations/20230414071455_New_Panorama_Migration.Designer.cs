@@ -4,14 +4,16 @@ using AIB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AIB.Data.Migrations
 {
     [DbContext(typeof(AIBContext))]
-    partial class AIBContextModelSnapshot : ModelSnapshot
+    [Migration("20230414071455_New_Panorama_Migration")]
+    partial class New_Panorama_Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,7 +305,7 @@ namespace AIB.Data.Migrations
                         new
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "44c99a84-391c-4301-9ece-d1a03c9a9cd2",
+                            ConcurrencyStamp = "f244f52f-b4c5-47e2-bccb-6b974df494d7",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         });
@@ -431,7 +433,7 @@ namespace AIB.Data.Migrations
                         {
                             Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7621ed4f-f03d-4f03-8a29-91c79236cb12",
+                            ConcurrencyStamp = "8590b9d6-33ed-4e84-a3fc-9942726e7fdd",
                             Email = "sales1@panoramains.com",
                             EmailConfirmed = true,
                             FirstName = "sales1@panoramains.com",
@@ -440,7 +442,7 @@ namespace AIB.Data.Migrations
                             MarriageStatus = 1,
                             NormalizedEmail = "sales1@panoramains.com",
                             NormalizedUserName = "sales1@panoramains.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBAi2EU3MoYGnMshw9Hhh11goE2F6+kBSWk/LGDKdgItvgIv50B2nC5J6F2TF6JuQw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI6hO/39RyFewf+Yqc2U9pnWkbgy6n05be7O9YY4N6EACPQDvy/c7lCuZVS2eG+zZA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -658,9 +660,6 @@ namespace AIB.Data.Migrations
 
                     b.Property<int>("VehicleModelId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("YearOfManufacturing")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

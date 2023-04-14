@@ -13,7 +13,7 @@ namespace AIB.Data.Entities
         public string CustomerName { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string ChassisNumber { get; set; }
-
+        public DateTime? YearOfManufacturing { get; set; }
         public decimal Commission { get; set; }
         public decimal NETPrice { get; set; }
         public decimal SalesPrice { get; set; }
