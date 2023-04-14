@@ -48,19 +48,9 @@ namespace AIB.Data.Migrations
                 type: "nvarchar(max)",
                 nullable: true);
 
-            migrationBuilder.UpdateData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                column: "ConcurrencyStamp",
-                value: "2f2e1dd0-baf2-4d68-80d7-e459864721e3");
+          
 
-            migrationBuilder.UpdateData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "6a667f34-43bd-44b7-a1f4-a07fc45bbf74", "AQAAAAEAACcQAAAAEJKKun8ukJZLwMi0wFrQlCbV25y1YZGLCiQ+rgbzupX6P1gS4DzzFYZcQQfqXlJxvg==" });
+           
         }
     }
 }
