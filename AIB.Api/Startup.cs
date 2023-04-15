@@ -77,11 +77,11 @@ namespace AIB.Api
                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Information)));
             });
 
-            services.AddHostedService<FileCleanupService>(x =>
-            {
+            //services.AddHostedService<FileCleanupService>(x =>
+            //{
 
-                return new FileCleanupService(_env);
-            });
+            //    return new FileCleanupService(_env);
+            //});
             services.Configure<SmtpSettings>(Utils._config.GetSection("SmtpSettings"));
             services.AddSingleton<IMailer, Mailer>();
             //Identity Service
