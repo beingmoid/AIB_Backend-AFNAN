@@ -6,19 +6,7 @@ namespace AIB.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.UpdateData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                column: "ConcurrencyStamp",
-                value: "065b8500-2dcb-456e-b60e-293aad62e05c");
-
-            migrationBuilder.UpdateData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                columns: new[] { "ConcurrencyStamp", "Email", "FirstName", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "UserName" },
-                values: new object[] { "c149f971-b261-4a17-8a40-3a1f9624d565", "rashidt24@gmail.com", "rashidt24@gmail.com", "rashidt24@gmail.com", "rashidt24@gmail.com", "AQAAAAEAACcQAAAAEFBPYjjPcCqBn2JdnhsoolcWf2LF5CC9atS8uVhGzNjmBgQ570kYcwt/AWEfqg0erw==", "rashidt24@gmail.com" });
+          
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

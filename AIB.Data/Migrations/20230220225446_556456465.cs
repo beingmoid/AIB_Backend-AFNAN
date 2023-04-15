@@ -36,19 +36,7 @@ namespace AIB.Data.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
-            migrationBuilder.UpdateData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                column: "ConcurrencyStamp",
-                value: "bae3f12d-c297-4843-a1e9-c080f5a0d544");
-
-            migrationBuilder.UpdateData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "8d678df6-25eb-4a22-8c22-ef53505de078", "AQAAAAEAACcQAAAAEIoVaAyQ5kgcuJstJWmT7wDlDjuOJN7Xu4diqysSs3xc4p7i0tky/oNPk8kQqBryRA==" });
+          
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_BranchId",
