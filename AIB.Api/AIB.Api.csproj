@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FileCleanupService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Uploads\Temp.html" />
   </ItemGroup>
 
