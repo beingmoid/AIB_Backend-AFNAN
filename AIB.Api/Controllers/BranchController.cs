@@ -47,17 +47,17 @@ namespace AIB.Api.Controllers
 
             OtherConstants.isSuccessful = true;
 
-            var response = await _service.GetBranchWithStatsByMonth();
-            //var response = new BranchDTO();
-            //var extendedBranch = (await _context.Set<Branch>().ToListAsync());
-            //foreach (var item in extendedBranch)
-            //{
-            //    var brach = new ExtendedBranch();
-            //    brach.Id = item.Id;
-            //    brach.Name = item.Name;
-            //    brach.MainBranch = item.MainBranch;
-            //    response.Branches.Add(brach);
-            //}
+            // var response = await _service.GetBranchWithStatsByMonth();
+            var response = new BranchDTO();
+            var extendedBranch = (await _context.Set<Branch>().ToListAsync());
+            foreach (var item in extendedBranch)
+            {
+                var brach = new ExtendedBranch();
+                brach.Id = item.Id;
+                brach.Name = item.Name;
+                brach.MainBranch = item.MainBranch;
+                response.Branches.Add(brach);
+            }
 
 
 
@@ -66,9 +66,10 @@ namespace AIB.Api.Controllers
         }
         [HttpGet("GetBranchAsync")]
         public async Task<BaseResponse> GetBranchAsync()
-        {
+        { 
+            var response = await _service.GetBranchWithStatsByMonth();
             OtherConstants.isSuccessful = true; 
-            return constructResponse(await _context.Set<Branch>().ToListAsync());
+            return constructResponse(response);
         }
         [HttpGet("GetBranchDetailsAsync")]
         public async Task<BaseResponse> GetBranchWithDetailsAsync(int? Month, Guid BranchId)

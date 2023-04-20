@@ -61,6 +61,7 @@ public class PdfConverter
      string periodDate = "")
     {
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+  
         // Create a new PDF document
         Document document = new Document(PageSize.A4.Rotate());
         var eventHelper = new MyPageEventHandler();
@@ -74,8 +75,8 @@ public class PdfConverter
         document.Open();
 
         // Set up the fonts
-        BaseFont headerFont = BaseFont.CreateFont(@"https://sqaurex.com/files/Poppins/Poppins-Bold.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED); ;
-        BaseFont cellFont = BaseFont.CreateFont(@"https://sqaurex.com/files/Poppins/Poppins-Medium.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        BaseFont headerFont = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED); 
+        BaseFont cellFont = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
         // Add the heading to the PDF document
         Paragraph heading = new Paragraph("Agent Account Statement", new Font(cellFont, 24, Font.BOLD));
         heading.Alignment = Element.ALIGN_CENTER;
@@ -120,8 +121,9 @@ public class PdfConverter
         agentTableContainer.HorizontalAlignment = Element.ALIGN_LEFT;
         outerTable.AddCell(agentTableContainer);
 
-        // Create a cell for the logo
-        string logoPath = @"https://sqaurex.com/files/logo.png";
+       // Create a cell for the logo
+
+       string logoPath = @"https://sqaurex.com/files/logo.png";
         Image logo = Image.GetInstance(logoPath);
         logo.ScaleToFit(100, 100);
         PdfPCell logoCell = new PdfPCell(logo);

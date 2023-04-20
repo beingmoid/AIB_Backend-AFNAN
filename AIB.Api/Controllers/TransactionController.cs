@@ -376,7 +376,7 @@ namespace AIB.Api.Controllers
             {
                
                 newList.ToExcel(contentPath + "\\uploads\\" + $"{ransomeNameStr}.xlsx");
-               
+
                 PdfConverter pdf = new PdfConverter();
                 pdf.CreatePdfWithHeaderAndFooter(
                    newList, (new string[] { "Date",
@@ -400,7 +400,7 @@ namespace AIB.Api.Controllers
                 return constructResponse(new
                 {
                     excelFileUrl = "https://" + serverUrl + $"/uploads/{ransomeNameStr}.xlsx",
-                    pdfFileUrl = "https://" + serverUrl + $"/uploads/{ransomeNameStr}.pdf",
+                  pdfFileUrl = "https://" + serverUrl + $"/uploads/{ransomeNameStr}.pdf",
                     data = newList
                 });
             }
