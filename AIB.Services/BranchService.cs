@@ -94,117 +94,117 @@ namespace AIB.Services.Core
             //    .Include(x => x.Managers)
             //        .Include(x => x.Agents).Where(x => x.MainBranch)?.SingleOrDefault();
 
-            var AccountsReceviableForAllBranches = (await _tranRepo.Query.Where(x => x.AgentId != null 
-            && x.TransactionDate.Month==DateTime.Now.Month).ToListAsync())
-                .Aggregate(0m, (acc,t)=>
+        //    var AccountsReceviableForAllBranches = (await _tranRepo.Query.Where(x => x.AgentId != null 
+        //    && x.TransactionDate.Month==DateTime.Now.Month).ToListAsync())
+        //        .Aggregate(0m, (acc,t)=>
             
-            t.TransactionType==TransactionType.Credit? acc+t.Amount: acc-t.Amount
+        //    t.TransactionType==TransactionType.Credit? acc+t.Amount: acc-t.Amount
             
-            );
-            var AccountsReceviableForAllBranchesLastMonth = (await _tranRepo.Query.Where(x => x.AgentId != null
-        && x.TransactionDate.Month == (DateTime.Now.Month-1)).ToListAsync())
-            .Aggregate(0m, (acc, t) =>
+        //    );
+        //    var AccountsReceviableForAllBranchesLastMonth = (await _tranRepo.Query.Where(x => x.AgentId != null
+        //&& x.TransactionDate.Month == (DateTime.Now.Month-1)).ToListAsync())
+        //    .Aggregate(0m, (acc, t) =>
 
-        t.TransactionType == TransactionType.Credit ? acc + t.Amount : acc - t.Amount
+        //t.TransactionType == TransactionType.Credit ? acc + t.Amount : acc - t.Amount
 
-        );
-
-
-            var statsForAR = new DifferencialStats(
-                StatsFor.ReceviableMonth, 
-                this.IncreaseOrDecrease(AccountsReceviableForAllBranches, AccountsReceviableForAllBranchesLastMonth)
-                , this.GetPercentage(AccountsReceviableForAllBranches, AccountsReceviableForAllBranchesLastMonth),
-                AccountsReceviableForAllBranches,
-                AccountsReceviableForAllBranchesLastMonth
-
-                );
+        //);
 
 
+            //var statsForAR = new DifferencialStats(
+            //    StatsFor.ReceviableMonth, 
+            //    this.IncreaseOrDecrease(AccountsReceviableForAllBranches, AccountsReceviableForAllBranchesLastMonth)
+            //    , this.GetPercentage(AccountsReceviableForAllBranches, AccountsReceviableForAllBranchesLastMonth),
+            //    AccountsReceviableForAllBranches,
+            //    AccountsReceviableForAllBranchesLastMonth
 
-            var AccountsPayableAllBranches =(
-                await _tranRepo.Query.Where(x => x.CompanyId != null
-
-            && x.TransactionDate.Month == DateTime.Now.Month
-
-            ).ToListAsync()).Aggregate(0m, (acc, t) =>
-
-      t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
-
-      );
+            //    );
 
 
-            var AccountsPayableAllBranchesLastMonth = (
-          await _tranRepo.Query.Where(x => x.CompanyId != null
 
-      && x.TransactionDate.Month == DateTime.Now.Month-1
+//            var AccountsPayableAllBranches =(
+//                await _tranRepo.Query.Where(x => x.CompanyId != null
 
-      ).ToListAsync()).Aggregate(0m, (acc, t) =>
+//            && x.TransactionDate.Month == DateTime.Now.Month
 
-t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
+//            ).ToListAsync()).Aggregate(0m, (acc, t) =>
 
-);
+//      t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
 
-
-            var statsForAP = new DifferencialStats(
-                StatsFor.PayableMonth,
-                this.IncreaseOrDecrease(AccountsPayableAllBranches, AccountsPayableAllBranchesLastMonth)
-                , this.GetPercentage(AccountsPayableAllBranches, AccountsPayableAllBranchesLastMonth),
-                AccountsPayableAllBranches,
-                AccountsPayableAllBranchesLastMonth
-
-                );
+//      );
 
 
-            var cashInBanksli = (await _tranRepo.Query.Where(x => x.BankId != null
+//            var AccountsPayableAllBranchesLastMonth = (
+//          await _tranRepo.Query.Where(x => x.CompanyId != null
 
-            && x.TransactionDate.Month == DateTime.Now.Month).ToListAsync());
+//      && x.TransactionDate.Month == DateTime.Now.Month-1
 
-            var cashInBanks= cashInBanksli.Aggregate(0m, (acc, t) =>
+//      ).ToListAsync()).Aggregate(0m, (acc, t) =>
 
- t.TransactionType == TransactionType.Debit ? acc +=t.Amount : acc -=t.Amount
+//t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
 
- );
-
-
-            var cashInBanksLastMonth = (await _tranRepo.Query.Where(x => x.BankId != null
-
-&& x.TransactionDate.Month == DateTime.Now.Month-1).ToListAsync()).Aggregate(0m, (acc, t) =>
-
-t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
-
-);
+//);
 
 
-            var statsForCASH = new DifferencialStats(
-                StatsFor.CashInBankMonth,
-                this.IncreaseOrDecrease(cashInBanks, cashInBanksLastMonth)
-                , this.GetPercentage(cashInBanks, cashInBanksLastMonth),
-                cashInBanks,
-                cashInBanksLastMonth
+//            var statsForAP = new DifferencialStats(
+//                StatsFor.PayableMonth,
+//                this.IncreaseOrDecrease(AccountsPayableAllBranches, AccountsPayableAllBranchesLastMonth)
+//                , this.GetPercentage(AccountsPayableAllBranches, AccountsPayableAllBranchesLastMonth),
+//                AccountsPayableAllBranches,
+//                AccountsPayableAllBranchesLastMonth
 
-                );
-
-
-            decimal? expenses = (await this.Get(x=>x.Include(x=>x.Expenses),x=>x.MainBranch )).Values?.SingleOrDefault().Expenses.Where(x => x.ExpenseDate.Month == DateTime.Now.Month)?
-              .Sum(x => x.ExpenseAmount);
-
-            decimal? expensesForLastMonth = (await this.Get(x => x.Include(x => x.Expenses), x => x.MainBranch)).Values?.SingleOrDefault().Expenses.Where(x => x.ExpenseDate.Month == DateTime.Now.Month-1)?
-  .Sum(x => x.ExpenseAmount);
-
-            var statsForExpense = new DifferencialStats(
-                StatsFor.ExpenseMonth,
-                this.IncreaseOrDecrease(expenses??0, expensesForLastMonth??0)
-                , this.GetPercentage(expenses??0, expensesForLastMonth??0),
-                expenses ?? 0,
-                expensesForLastMonth ?? 0
-
-                );
+//                );
 
 
-            branchDetails.StatsForExpense = statsForExpense;
-            branchDetails.StatsForAR= statsForAR;
-            branchDetails.StatsForAP = statsForAP;
-            branchDetails.StatsForCASH=statsForCASH;
+//            var cashInBanksli = (await _tranRepo.Query.Where(x => x.BankId != null
+
+//            && x.TransactionDate.Month == DateTime.Now.Month).ToListAsync());
+
+//            var cashInBanks= cashInBanksli.Aggregate(0m, (acc, t) =>
+
+// t.TransactionType == TransactionType.Debit ? acc +=t.Amount : acc -=t.Amount
+
+// );
+
+
+//            var cashInBanksLastMonth = (await _tranRepo.Query.Where(x => x.BankId != null
+
+//&& x.TransactionDate.Month == DateTime.Now.Month-1).ToListAsync()).Aggregate(0m, (acc, t) =>
+
+//t.TransactionType == TransactionType.Debit ? acc + t.Amount : acc - t.Amount
+
+//);
+
+
+//            var statsForCASH = new DifferencialStats(
+//                StatsFor.CashInBankMonth,
+//                this.IncreaseOrDecrease(cashInBanks, cashInBanksLastMonth)
+//                , this.GetPercentage(cashInBanks, cashInBanksLastMonth),
+//                cashInBanks,
+//                cashInBanksLastMonth
+
+//                );
+
+
+//            decimal? expenses = (await this.Get(x=>x.Include(x=>x.Expenses),x=>x.MainBranch )).Values?.SingleOrDefault().Expenses.Where(x => x.ExpenseDate.Month == DateTime.Now.Month)?
+//              .Sum(x => x.ExpenseAmount);
+
+//            decimal? expensesForLastMonth = (await this.Get(x => x.Include(x => x.Expenses), x => x.MainBranch)).Values?.SingleOrDefault().Expenses.Where(x => x.ExpenseDate.Month == DateTime.Now.Month-1)?
+//  .Sum(x => x.ExpenseAmount);
+
+//            var statsForExpense = new DifferencialStats(
+//                StatsFor.ExpenseMonth,
+//                this.IncreaseOrDecrease(expenses??0, expensesForLastMonth??0)
+//                , this.GetPercentage(expenses??0, expensesForLastMonth??0),
+//                expenses ?? 0,
+//                expensesForLastMonth ?? 0
+
+//                );
+
+
+//            branchDetails.StatsForExpense = statsForExpense;
+//            branchDetails.StatsForAR= statsForAR;
+//            branchDetails.StatsForAP = statsForAP;
+//            branchDetails.StatsForCASH=statsForCASH;
             //var zx
             //decimal recivables = data.Transactions.Where(
 
