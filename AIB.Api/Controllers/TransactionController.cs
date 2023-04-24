@@ -274,6 +274,10 @@ namespace AIB.Api.Controllers
         [HttpPost("GetBrokerStatement")]
         public async Task<BaseResponse> GetStatement([FromBody] StatementRequestDTO dto)
         {
+            using (_context)
+            {
+
+           
 
             //var transactions = (await _service.Get(x => x.Include(x => x.Sales).ThenInclude(x => x.MotorType).Include(x => x.Sales).ThenInclude(x => x.VehicleModel).Include(x=>x.Sales).ThenInclude(x=>x.Broker)
             //,x => (x.TransactionDate.Date >= dto.DateFrom.Date && x.TransactionDate.Date <= dto.DateTo.Date) && x.CompanyId == dto.CompanyId)).Values.ToList();
@@ -443,15 +447,21 @@ namespace AIB.Api.Controllers
                     data = newList
                 });
             }
-             
-
 
             }
+
+        }
 
         [HttpPost("GetAgentStatement")]
         public async Task<BaseResponse> GetAgentStatement([FromBody] StatementRequestDTO dto)
         {
+            using (_service)
+            {
 
+                using (_context)
+                {
+
+          
             var transactions = (await _service.Get(x => x.Include(x => x.Sales).ThenInclude(x => x.MotorType).Include(x => x.Sales).ThenInclude(x => x.VehicleModel).Include(x => x.Sales).ThenInclude(x => x.Broker)
             , x => x.AgentId == dto.CompanyId)).Values.ToList();
             var list = new List<StatementDTO>();
@@ -631,7 +641,8 @@ namespace AIB.Api.Controllers
 
 
 
-
+            }
+            }
         }
 
 
@@ -639,80 +650,87 @@ namespace AIB.Api.Controllers
         public async Task<BaseResponse> GetBankStatement([FromBody] StatementRequestDTO dto)
         {
 
-         
-            var transactions = (await _service.Get(x => x.Include(x => x.Bank)
+            using (_service)
+            {
+
+                using (_context)
+                {
+
+
+
+                    var transactions = (await _service.Get(x => x.Include(x => x.Bank)
             .Include(x => x.Company)
             .Include(x => x.Agent)
-, x =>  x.BankId == dto.CompanyId)).Values.ToList();
+, x => x.BankId == dto.CompanyId)).Values.ToList();
 
-            var list = new List<StatementDTO>();
+                    var list = new List<StatementDTO>();
 
-            decimal outstanding_balance = 0;
-            foreach (var item in transactions)
-            {
-              
-              
-                    StatementDTO DTO = new StatementDTO();
-                    DTO.Date = item.TransactionDate.Date;
-                    DTO.CompanyName = item.Company?.Name != null ? item.Company?.Name : item.Agent?.Name;
-                    DTO.ReferenceNumber = item.TransactionReferenceNumber;
-                if (item.Company == null && item.Agent == null)
-                {
-                    DTO.CompanyName = "Opening Balance";
-                    if (item.TransactionType == TransactionType.Debit)
+                    decimal outstanding_balance = 0;
+                    foreach (var item in transactions)
                     {
-                        DTO.Debit = item.Amount;
-                        DTO.Balance = item.Amount;
-                        outstanding_balance = item.Amount;
-                    }
-                }
-                else
-                {
-                    if (item.TransactionType == TransactionType.Credit)
-                    {
-                      
-                        outstanding_balance -= item.Amount;
-                        DTO.Credit = item.Amount;
+
+
+                        StatementDTO DTO = new StatementDTO();
+                        DTO.Date = item.TransactionDate.Date;
+                        DTO.CompanyName = item.Company?.Name != null ? item.Company?.Name : item.Agent?.Name;
                         DTO.ReferenceNumber = item.TransactionReferenceNumber;
+                        if (item.Company == null && item.Agent == null)
+                        {
+                            DTO.CompanyName = "Opening Balance";
+                            if (item.TransactionType == TransactionType.Debit)
+                            {
+                                DTO.Debit = item.Amount;
+                                DTO.Balance = item.Amount;
+                                outstanding_balance = item.Amount;
+                            }
+                        }
+                        else
+                        {
+                            if (item.TransactionType == TransactionType.Credit)
+                            {
+
+                                outstanding_balance -= item.Amount;
+                                DTO.Credit = item.Amount;
+                                DTO.ReferenceNumber = item.TransactionReferenceNumber;
+                            }
+                            else
+                            {
+                                outstanding_balance += item.Amount;
+                                DTO.Debit = item.Amount;
+                            }
+                        }
+
+
+                        DTO.Balance = outstanding_balance;
+                        list.Add(DTO);
                     }
+
+
+                    var reservList = list.Where(x => x.Date.Date >= dto.DateFrom.Date).Where(x => x.Date.Date <= dto.DateTo.Date).ToList();
+
+                    var debit_balance = list.Where(x => x.Date.Date < dto.DateFrom.Date).Sum(x => x.Debit);
+                    var credit_balance = list.Where(x => x.Date.Date < dto.DateFrom.Date).Sum(x => x.Credit);
+                    decimal outstanding = 0;
+                    if (debit_balance >= credit_balance)
+                        outstanding = debit_balance - credit_balance;
                     else
-                    {
-                        outstanding_balance += item.Amount;
-                        DTO.Debit = item.Amount;
-                    }
-                }
+                        outstanding = credit_balance - debit_balance;
 
+                    var newList = new List<StatementDTO>();
+                    var enity = new StatementDTO();
+                    enity.Balance = outstanding;
 
-                    DTO.Balance = outstanding_balance;
-                    list.Add(DTO);
-                }
+                    newList.Add(enity);
+                    newList.AddRange(reservList);
+                    string wwwPath = _env.WebRootPath;
+                    string contentPath = _env.ContentRootPath;
+                    string path = Path.Combine(contentPath, $"\\uploads\\{new DateTime().Ticks.ToString()}.xlsx");
+                    var serverUrl = this.HttpContext.Request.Host.ToString();
+                    var ransomeNameStr = new Random().Next(DateTime.Now.Second, 10000).ToString() +
+                        new DateTime().Ticks.ToString();
+                    var isHttps = this.HttpContext.Request.IsHttps;
 
-
-            var reservList = list.Where(x => x.Date.Date >= dto.DateFrom.Date).Where(x => x.Date.Date <= dto.DateTo.Date).ToList();
-
-            var debit_balance = list.Where(x => x.Date.Date < dto.DateFrom.Date).Sum(x => x.Debit);
-            var credit_balance= list.Where(x => x.Date.Date < dto.DateFrom.Date).Sum(x => x.Credit);
-            decimal outstanding = 0;
-            if (debit_balance >= credit_balance)
-                outstanding = debit_balance - credit_balance;
-            else
-                outstanding = credit_balance - debit_balance;
-
-            var newList = new List<StatementDTO>();
-            var enity =new StatementDTO();
-            enity.Balance = outstanding;
-
-            newList.Add(enity);
-            newList.AddRange(reservList);
-            string wwwPath = _env.WebRootPath;
-            string contentPath = _env.ContentRootPath;
-            string path = Path.Combine(contentPath, $"\\uploads\\{new DateTime().Ticks.ToString()}.xlsx");
-            var serverUrl = this.HttpContext.Request.Host.ToString();
-            var ransomeNameStr = new Random().Next(DateTime.Now.Second, 10000).ToString() +
-                new DateTime().Ticks.ToString();
-            var isHttps = this.HttpContext.Request.IsHttps;
-
-            var columnConfig = new List<ExcelColumnConfig>
+                    var columnConfig = new List<ExcelColumnConfig>
 {
     // add column mapping configuration here
         new ExcelColumnConfig("Date", p => ((StatementDTO)p).Date),
@@ -726,16 +744,18 @@ namespace AIB.Api.Controllers
 
 
 };
-            newList.ToExcel(contentPath + "\\uploads\\" + $"{ransomeNameStr}.xlsx", columnConfig);
-            OtherConstants.isSuccessful = true;
-            return constructResponse(new
-            {
-                excelFileUrl = "https://" + serverUrl + $"/uploads/{ransomeNameStr}.xlsx",
+                    newList.ToExcel(contentPath + "\\uploads\\" + $"{ransomeNameStr}.xlsx", columnConfig);
+                    OtherConstants.isSuccessful = true;
+                    return constructResponse(new
+                    {
+                        excelFileUrl = "https://" + serverUrl + $"/uploads/{ransomeNameStr}.xlsx",
 
-                data = newList
-            });
+                        data = newList
+                    });
+                }
+            }
+       
         }
-         
 
 
         [HttpGet("GetRevenuePerMonthData")]

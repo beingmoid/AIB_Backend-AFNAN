@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Azure.AI.FormRecognizer" Version="4.0.0" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="FluentExcel" Version="2.2.0" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />

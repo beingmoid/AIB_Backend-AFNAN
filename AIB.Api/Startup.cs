@@ -194,6 +194,7 @@ namespace AIB.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(_env.ContentRootPath, "Uploads")),
@@ -214,18 +215,19 @@ namespace AIB.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            //List<string> origins = new List<string> { "http://localhost:4200", "https://localhost:4200", "http://localhost:4300", "http://localhost:4500" };
+            app.UseCors(x => x
+       .AllowAnyMethod()
+               .AllowAnyHeader()
+                   .SetIsOriginAllowed(origin => true) // allow any origin
+                               .AllowCredentials()
+                               ); // allow credentials
+                                  //List<string> origins = new List<string> { "http://localhost:4200", "https://localhost:4200", "http://localhost:4300", "http://localhost:4500" };
 
             //app.UseCors(options =>
             //{
             //    options.WithOrigins(origins.ToArray()).AllowAnyMethod().AllowCredentials().AllowAnyHeader().SetIsOriginAllowed((host) => true);
             //});
-            app.UseCors(x => x
-           .AllowAnyMethod()
-                   .AllowAnyHeader()
-                       .SetIsOriginAllowed(origin => true) // allow any origin
-                                   .AllowCredentials()
-                                   ); // allow credentials
+
 
             app.UseAuthorization();
 
@@ -233,6 +235,7 @@ namespace AIB.Api
             {
                 endpoints.MapControllers();
             });
+        
         }
     }
     internal class CustomAssemblyLoadContext : AssemblyLoadContext
