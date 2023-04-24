@@ -46,16 +46,17 @@ public class MyPageEventHandler : PdfPageEventHelper
 
 }
 public class PdfConverter
-{ 
-    
-    
-    
+{
+
+
+
     public void CreatePdfWithHeaderAndFooter(
-  
-   
+
+
      List<StatementDTO> dataList,
      string[] columnNames,
      string path,
+     bool isBroker = true,
        string agentNameText = "",
      string agentTotalBalance = "",
      string periodDate = "")
@@ -135,9 +136,9 @@ public class PdfConverter
 
         document.Add(new Paragraph("\n\n"));
         // Create the table
-        PdfPTable table = new PdfPTable(10);
+        PdfPTable table = new PdfPTable(15);
         table.WidthPercentage = 100;
-        table.SetWidths(new float[] { 2.5f, 6.5f, 6.5f,1.8f, 3.5f,5.5f,3.5f, 2.5f, 2.5f, 2.5f });
+        table.SetWidths(new float[] { 5.5f, 9.9f, 9.5f,4.8f, 6.5f,6.5f,6.5f, 4.5f, 4.5f, 4.5f,4.5f, 4.5f, 4.5f, 4.5f, 4.5f });
         //Date,Policy,Customer,PolicyType,Make&Model,InsuredBy,Ref#,Debit,Credit,Balance
 
         // Create the header row
@@ -148,15 +149,17 @@ public class PdfConverter
         cell.HorizontalAlignment = Element.ALIGN_CENTER;
         table.AddCell(cell);
 
+        cell = new PdfPCell(new Phrase("Customer", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
         cell = new PdfPCell(new Phrase("Policy#", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
         cell.BackgroundColor = new BaseColor(31, 53, 99);
         cell.HorizontalAlignment = Element.ALIGN_CENTER;
         table.AddCell(cell);
 
-        cell = new PdfPCell(new Phrase("Customer", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
-        cell.BackgroundColor = new BaseColor(31, 53, 99);
-        cell.HorizontalAlignment = Element.ALIGN_CENTER;
-        table.AddCell(cell);
+  
         cell = new PdfPCell(new Phrase("Type", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
         cell.BackgroundColor = new BaseColor(31, 53, 99);
         cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -178,6 +181,33 @@ public class PdfConverter
         cell.HorizontalAlignment = Element.ALIGN_CENTER;
         table.AddCell(cell);
 
+        cell = new PdfPCell(new Phrase("Gross Premium", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
+
+        cell = new PdfPCell(new Phrase( isBroker?"Comission":"Sales Comission", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
+        cell = new PdfPCell(new Phrase("Policy Issuer", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
+        cell = new PdfPCell(new Phrase("Remark", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
+        cell = new PdfPCell(new Phrase("Status", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
+        cell.BackgroundColor = new BaseColor(31, 53, 99);
+        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(cell);
+
+  
     
 
         cell = new PdfPCell(new Phrase("Debit", new Font(headerFont, 10, Font.NORMAL, BaseColor.WHITE)));
@@ -201,15 +231,18 @@ public class PdfConverter
             cell = new PdfPCell(new Phrase(item.Date.ToShortDateString(), new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(cell);
-            cell = new PdfPCell(new Phrase(item.PolicyNumber, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            table.AddCell(cell);
-
 
 
             cell = new PdfPCell(new Phrase(item.CustomerName, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(cell);
+
+
+            cell = new PdfPCell(new Phrase(item.PolicyNumber, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
 
             cell = new PdfPCell(new Phrase(item.MotorType, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -226,6 +259,33 @@ public class PdfConverter
             table.AddCell(cell);
 
             cell = new PdfPCell(new Phrase(item.ReferenceNumber, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
+            cell = new PdfPCell(new Phrase(item.GrossPremium, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
+
+            cell = new PdfPCell(new Phrase( item.Comission, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
+            cell = new PdfPCell(new Phrase(item.PolicyIssuer, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
+            cell = new PdfPCell(new Phrase(item.Remark, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.AddCell(cell);
+
+
+
+            cell = new PdfPCell(new Phrase(item.Status, new Font(cellFont, 10, Font.NORMAL, BaseColor.BLACK)));
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
             table.AddCell(cell);
 

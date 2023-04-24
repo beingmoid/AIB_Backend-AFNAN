@@ -395,6 +395,7 @@ namespace AIB.Api.Controllers
                     "Balance", }),
 
                     contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf",
+                    false,
                     agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString());
                 OtherConstants.isSuccessful = true;
                 return constructResponse(new
@@ -423,8 +424,8 @@ namespace AIB.Api.Controllers
                     "Credit",
                     "Balance", }),
 
-                      contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf",
-                      agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString());
+                      contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf"
+                      ,false,agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString());
 
                 OtherConstants.isSuccessful = true;
                 return constructResponse(new
@@ -579,7 +580,8 @@ namespace AIB.Api.Controllers
                     "Balance", }),
 
                     contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf",
-                    agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString()); ;
+                    
+                    false,agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString()); ;
                 OtherConstants.isSuccessful = true;
                 return constructResponse(new
                 {
@@ -607,8 +609,8 @@ namespace AIB.Api.Controllers
                     "Credit",
                     "Balance", }),
 
-                    contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf",
-                    agent.Name, outstanding.ToString(),dto.DateFrom.ToShortDateString()+" to "+ dto.DateTo.ToShortDateString()  );
+                    contentPath + "\\uploads\\" + $"{ransomeNameStr}.pdf", false,
+                    agent.Name, outstanding.ToString(), dto.DateFrom.ToShortDateString() + " to " + dto.DateTo.ToShortDateString()); ;
                 OtherConstants.isSuccessful = true;
                 return constructResponse(new
                 {
