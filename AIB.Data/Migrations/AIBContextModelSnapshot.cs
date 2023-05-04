@@ -302,8 +302,8 @@ namespace AIB.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            ConcurrencyStamp = "87429db7-681e-49c3-9ab1-cfd78532cad0",
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576",
+                            ConcurrencyStamp = "cbd16b61-873e-4b99-be4a-2e967e8798cc",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         });
@@ -429,23 +429,23 @@ namespace AIB.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
+                            Id = "a18be9c0-aa65-4af8-bd17-00bd9344e576",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f49e45b0-09c2-4dc1-b7e9-c72a73201789",
-                            Email = "sales1@panoramains.com",
+                            ConcurrencyStamp = "47ed75f2-f57d-4fda-9920-faaa1518133b",
+                            Email = "jantomarch@afnanscb.com",
                             EmailConfirmed = true,
-                            FirstName = "sales1@panoramains.com",
+                            FirstName = "jantomarch@afnanscb.com",
                             Gender = 1,
                             LockoutEnabled = false,
                             MarriageStatus = 1,
-                            NormalizedEmail = "sales1@panoramains.com",
-                            NormalizedUserName = "sales1@panoramains.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMdAvFnOo5vR/GWD1DADC782DOb2yUx5U1qDTDRZsiD+88YpWRvkEplyD7Ui/dg7DQ==",
+                            NormalizedEmail = "jantomarch@afnanscb.com",
+                            NormalizedUserName = "jantomarch@afnanscb.com",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPxlAKUn65Yy5DRGog2UmmMgOy90uQs2DFjCro3yhbDzfGijzlHFjcPs5jaUOgLJWQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
                             TypeOfUser = 2,
-                            UserName = "sales1@panoramains.com",
+                            UserName = "jantomarch@afnanscb.com",
                             isAgent = false,
                             isManager = false
                         });
@@ -838,392 +838,392 @@ namespace AIB.Data.Migrations
                             Id = 1,
                             ClaimType = "Dashboard",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 2,
                             ClaimType = "Dashboard",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 3,
                             ClaimType = "Dashboard",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 4,
                             ClaimType = "Dashboard",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 5,
                             ClaimType = "Branches",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 6,
                             ClaimType = "Branches",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 7,
                             ClaimType = "Branches",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 8,
                             ClaimType = "Branches",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 9,
                             ClaimType = "SalesManagement",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 10,
                             ClaimType = "SalesManagement",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 11,
                             ClaimType = "SalesManagement",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 12,
                             ClaimType = "SalesManagement",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 13,
                             ClaimType = "BankAccount",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 14,
                             ClaimType = "BankAccount",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 15,
                             ClaimType = "BankAccount",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 16,
                             ClaimType = "BankAccount",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 17,
                             ClaimType = "Broker",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 18,
                             ClaimType = "Broker",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 19,
                             ClaimType = "Broker",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 20,
                             ClaimType = "Broker",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 21,
                             ClaimType = "Outstandings",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 22,
                             ClaimType = "Outstandings",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 23,
                             ClaimType = "Outstandings",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 24,
                             ClaimType = "Outstandings",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 25,
                             ClaimType = "Transaction",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 26,
                             ClaimType = "Transaction",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 27,
                             ClaimType = "Transaction",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 28,
                             ClaimType = "Transaction",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 29,
                             ClaimType = "TeamMember",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 30,
                             ClaimType = "TeamMember",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 31,
                             ClaimType = "TeamMember",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 32,
                             ClaimType = "TeamMember",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 33,
                             ClaimType = "Statements",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 34,
                             ClaimType = "Statements",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 35,
                             ClaimType = "Statements",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 36,
                             ClaimType = "Statements",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 37,
                             ClaimType = "Settings",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 38,
                             ClaimType = "Settings",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 39,
                             ClaimType = "Settings",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 40,
                             ClaimType = "Settings",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 41,
                             ClaimType = "Agent",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 42,
                             ClaimType = "Agent",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 43,
                             ClaimType = "Agent",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 44,
                             ClaimType = "Agent",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 45,
                             ClaimType = "VehicleType",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 46,
                             ClaimType = "VehicleType",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 47,
                             ClaimType = "VehicleType",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 48,
                             ClaimType = "VehicleType",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 49,
                             ClaimType = "MotorType",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 50,
                             ClaimType = "MotorType",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 51,
                             ClaimType = "MotorType",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 52,
                             ClaimType = "MotorType",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 53,
                             ClaimType = "Expenses",
                             ClaimValue = "Create",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 54,
                             ClaimType = "Expenses",
                             ClaimValue = "Edit",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 55,
                             ClaimType = "Expenses",
                             ClaimValue = "View",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         },
                         new
                         {
                             Id = 56,
                             ClaimType = "Expenses",
                             ClaimValue = "Delete",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         });
                 });
 
@@ -1290,8 +1290,8 @@ namespace AIB.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e575",
-                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e575"
+                            UserId = "a18be9c0-aa65-4af8-bd17-00bd9344e576",
+                            RoleId = "a18be9c0-aa65-4af8-bd17-00bd9344e576"
                         });
                 });
 

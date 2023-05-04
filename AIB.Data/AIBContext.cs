@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using NukesLab.Core.Common;
 using System;
 
 using System.Collections.Generic;
@@ -131,7 +130,7 @@ namespace AIB.Data
 				Email = "sales1@panoramains.com",
 				NormalizedEmail = "sales1@panoramains.com",
 				EmailConfirmed = true,
-				PasswordHash = hasher.HashPassword(null, "Ram@ajman2023"),
+				PasswordHash = hasher.HashPassword(null, "Ram@2023"),
 				SecurityStamp = string.Empty
 			});
 			modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
