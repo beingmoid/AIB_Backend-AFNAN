@@ -18,7 +18,7 @@ namespace AIB.Api.Controllers
 {
 
     public class AuthController : BaseController
-    {uybhj67e3qa
+    {
         private readonly IAuthService _service;
         private readonly AIBContext _context;
         private readonly IExtendedUserRepository _repo;
