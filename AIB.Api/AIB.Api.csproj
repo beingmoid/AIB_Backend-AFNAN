@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>9d28acbd-71b9-4faa-844f-99524c0b325f</UserSecretsId>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
     <!--<RestoreProjectStyle>PackageReference</RestoreProjectStyle>-->
   </PropertyGroup>
 
@@ -41,6 +43,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.7" />
@@ -55,6 +58,7 @@
 
   <ItemGroup>
     <Folder Include="bin\Debug\netcoreapp3.1\" />
+    <Folder Include="dist\" />
 
   </ItemGroup>
 
