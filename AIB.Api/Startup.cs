@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -110,7 +111,7 @@ namespace AIB.Api
                    ClockSkew=TimeSpan.Zero
                };
            });
-
+          
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Casolve API", Version = "v1" });
@@ -188,18 +189,26 @@ namespace AIB.Api
             //var path = _env.WebRootPath;
             //services.AddWkhtmltopdf("wkhtmltopdf");
             //services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
-
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
+          
+
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(_env.ContentRootPath, "Uploads")),
                 RequestPath = "/uploads"
-            });
+            }
+            ); 
+
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -210,6 +219,7 @@ namespace AIB.Api
             {
                 c.SwaggerEndpoint(SwaggerConfiguration.SwaggerEndPointURL, SwaggerConfiguration.SwaggerEndPointName);
             });
+            app.UseMiddleware<ConnectionMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
@@ -230,12 +240,14 @@ namespace AIB.Api
 
 
             app.UseAuthorization();
-
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+               
             });
-        
+          
+
         }
     }
     internal class CustomAssemblyLoadContext : AssemblyLoadContext
