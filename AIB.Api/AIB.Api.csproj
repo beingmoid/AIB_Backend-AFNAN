@@ -4,39 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>9d28acbd-71b9-4faa-844f-99524c0b325f</UserSecretsId>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
     <!--<RestoreProjectStyle>PackageReference</RestoreProjectStyle>-->
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="FileCleanupService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="EmailTemplates\ArabicFont\Alexandria-VariableFont_wght.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\OFL.txt" />
-    <None Remove="EmailTemplates\ArabicFont\README.txt" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Black.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Bold.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-ExtraBold.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-ExtraLight.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Light.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Medium.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Regular.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-SemiBold.ttf" />
-    <None Remove="EmailTemplates\ArabicFont\static\Alexandria-Thin.ttf" />
-    <None Remove="EmailTemplates\Font\LexendDeca-VariableFont_wght.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Black.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Bold.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-ExtraBold.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-ExtraLight.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Light.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Medium.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Regular.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-SemiBold.ttf" />
-    <None Remove="EmailTemplates\Font\static\LexendDeca-Thin.ttf" />
-    <None Remove="EmailTemplates\logo.png" />
-    <None Remove="Uploads\Temp.html" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Uploads\Temp.html">
@@ -45,66 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\Alexandria-VariableFont_wght.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\OFL.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\README.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Black.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Bold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-ExtraBold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-ExtraLight.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Light.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Medium.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Regular.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-SemiBold.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\ArabicFont\static\Alexandria-Thin.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmailTemplates\Font\LexendDeca-VariableFont_wght.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Black.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Bold.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-ExtraBold.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-ExtraLight.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Light.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Medium.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Regular.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-SemiBold.ttf" />
-    <EmbeddedResource Include="EmailTemplates\Font\static\LexendDeca-Thin.ttf" />
-    <EmbeddedResource Include="EmailTemplates\logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Azure.AI.FormRecognizer" Version="4.0.0" />
     <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="FluentExcel" Version="2.2.0" />
-    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="itextsharp.xmlworker" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.11" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -115,6 +36,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.7" />
@@ -129,6 +51,7 @@
 
   <ItemGroup>
     <Folder Include="bin\Debug\netcoreapp3.1\" />
+    <Folder Include="dist\" />
 
   </ItemGroup>
 
