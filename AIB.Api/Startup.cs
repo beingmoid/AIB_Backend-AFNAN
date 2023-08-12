@@ -232,7 +232,7 @@ namespace AIB.Api
             {
                 c.SwaggerEndpoint(SwaggerConfiguration.SwaggerEndPointURL, SwaggerConfiguration.SwaggerEndPointName);
             });
-            app.UseMiddleware<ConnectionMiddleware>();
+        
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
