@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,7 +57,7 @@ namespace AIB.Api
             //   .AddEnvironmentVariables()
             //   .Build();
             //}
-            ConnectionStrings.AIBConnectionString = Utils._config["ConnectionStrings:AIBConnectionString"];
+            ConnectionStrings.AIBConnectionString = Utils._config.GetSection("ConnectionStrings:AIBConnectionString").Value;
             this.Configuration = Utils._config;
         }
         
@@ -110,7 +111,7 @@ namespace AIB.Api
                    ClockSkew=TimeSpan.Zero
                };
            });
-
+          
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Casolve API", Version = "v1" });
@@ -188,17 +189,39 @@ namespace AIB.Api
             //var path = _env.WebRootPath;
             //services.AddWkhtmltopdf("wkhtmltopdf");
             //services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
-
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseRouting();
+            app.UseCors(x => x
+       .AllowAnyMethod()
+               .AllowAnyHeader()
+                   .SetIsOriginAllowed(origin => true) // allow any origin
+                               .AllowCredentials()
+                               ); // allow credentials
+                                  //List<string> origins = new List<string> { "http://localhost:4200", "https://localhost:4200", "http://localhost:4300", "http://localhost:4500" };
+
+            //app.UseCors(options =>
+            //{
+            //    options.WithOrigins(origins.ToArray()).AllowAnyMethod().AllowCredentials().AllowAnyHeader().SetIsOriginAllowed((host) => true);
+            //});
+
+
             app.UseStaticFiles(new StaticFileOptions()
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(_env.ContentRootPath, "Uploads")),
                 RequestPath = "/uploads"
-            });
+            }
+            ); 
+
+          
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -209,30 +232,22 @@ namespace AIB.Api
             {
                 c.SwaggerEndpoint(SwaggerConfiguration.SwaggerEndPointURL, SwaggerConfiguration.SwaggerEndPointName);
             });
+            app.UseMiddleware<ConnectionMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-            //List<string> origins = new List<string> { "http://localhost:4200", "https://localhost:4200", "http://localhost:4300", "http://localhost:4500" };
 
-            //app.UseCors(options =>
-            //{
-            //    options.WithOrigins(origins.ToArray()).AllowAnyMethod().AllowCredentials().AllowAnyHeader().SetIsOriginAllowed((host) => true);
-            //});
-            app.UseCors(x => x
-           .AllowAnyMethod()
-                   .AllowAnyHeader()
-                       .SetIsOriginAllowed(origin => true) // allow any origin
-                                   .AllowCredentials()
-                                   ); // allow credentials
 
             app.UseAuthorization();
-
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+               
             });
+          
+
         }
     }
     internal class CustomAssemblyLoadContext : AssemblyLoadContext
